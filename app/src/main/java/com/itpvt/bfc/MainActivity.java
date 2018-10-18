@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
@@ -38,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
         webView = (android.webkit.WebView) findViewById(R.id.webView);
         progress = (ProgressBar) findViewById(R.id.progressBar);
         title = (TextView) findViewById(R.id.title);
+        progress.setMax(100);
 
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webView.loadUrl("https://youtube.com");
+        webView.loadUrl("http://bfc.com.pk");
         webView.setWebViewClient(new WebViewClient()
         {
             @Override
@@ -51,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 super.onPageStarted(view, url, favicon);
                 progress.setVisibility(View.VISIBLE);
                 title.setText("Loading....");
+
+
+
                 String title1=view.getTitle().toString().replace(""," ");
                 title.setText(title1);
                 Disableornot=false;
